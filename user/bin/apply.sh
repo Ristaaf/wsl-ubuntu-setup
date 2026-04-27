@@ -3,6 +3,7 @@ set -euo pipefail
 
 BIN_DIR="$HOME/.local/bin"
 MAN_DIR="$HOME/.local/share/man/man1"
+SETUP_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
 mkdir -p "$BIN_DIR"
 mkdir -p "$MAN_DIR"
@@ -23,3 +24,5 @@ fi
 
 # Optional sanity output
 ls -l "$BIN_DIR"/{bat,fd} 2>/dev/null || true
+
+ln -sf "$SETUP_ROOT/setup-sync.sh" "$BIN_DIR/setup-sync"
