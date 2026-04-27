@@ -1,0 +1,41 @@
+export skip_global_compinit=1
+
+export PATH="$HOME/.local/bin:$PATH"
+export LANG=en_US.UTF-8
+export EDITOR=nvim
+export VISUAL=nvim
+export COLORTERM=truecolor
+
+# Man pages: restore classic less-based coloring on modern Ubuntu
+export GROFF_NO_SGR=1
+export LESS='-R --use-color'
+
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Explicit Windows paths I want available in WSL
+path=(
+  /mnt/c/yank
+  /mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0
+  /mnt/c/WINDOWS/System32
+  "/mnt/c/Program Files/Microsoft VS Code/bin"
+  "/mnt/c/Program Files/cursor/resources/app/bin"
+  $path
+)
+
+export PATH

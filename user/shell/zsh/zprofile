@@ -1,0 +1,5 @@
+# zprofile — login shell config for zsh
+# Intentionally minimal
+
+# Load .zshenv explicitly (defensive; zsh already does)
+[ -f "$HOME/.zshenv" ] && . "$HOME/.zshenv"

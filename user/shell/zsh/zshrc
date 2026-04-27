@@ -1,0 +1,36 @@
+typeset -U path
+
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt share_history
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY
+
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+zstyle ":completion:" menu select
+
+source "$XDG_DATA_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias vim=nvim
+alias k=kubecolor
+
+alias ll='eza -l --icons --group-directories-first -hH'
+alias la='eza -la --icons --group-directories-first -hH'
+
+alias gs='git status'
+
+alias chrome="google-chrome \
+  --enable-features=UseOzonePlatform \
+  --ozone-platform=wayland \
+  >/dev/null 2>&1 & disown"
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
