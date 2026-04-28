@@ -12,4 +12,5 @@ sudo apt-get install -y \
 	kubecolor \
 	zoxide \
 	lazygit \
-	tree
+	tree \
+  unzip

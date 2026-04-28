@@ -31,3 +31,8 @@ make CMAKE_INSTALL_PREFIX="$NVIM_PREFIX" install
 # ---- Quick sanity output ----
 "$NVIM_PREFIX/bin/nvim" --version | head -n 3
 
+# ---- Dotfiles: ~/.config/nvim → this repo -------------------------
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NVIM_CONFIG_SRC="$SCRIPT_DIR/nvim"
+mkdir -p "$HOME/.config"
+ln -sfn "$NVIM_CONFIG_SRC" "$HOME/.config/nvim"
