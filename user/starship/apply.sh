@@ -33,4 +33,3 @@ cargo install --locked --path . --root "$STARSHIP_PREFIX"
 
 # ---- Quick sanity output ----
 "$STARSHIP_PREFIX/bin/starship" --version
-``

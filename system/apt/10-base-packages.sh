@@ -10,4 +10,6 @@ sudo apt-get install -y \
 	bat \
 	eza \
 	kubecolor \
-	zoxide
+	zoxide \
+	lazygit \
+	tree

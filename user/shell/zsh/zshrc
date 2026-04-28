@@ -13,8 +13,6 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 zstyle ":completion:" menu select
 
-source "$XDG_DATA_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -33,4 +31,10 @@ alias chrome="google-chrome \
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+# zsh-autosuggestions: load *after* Starship/zoxide so widget wrapping order is stable.
+# MANUAL_REBIND stops rebinding every precmd (large win with other ZLE wrappers; see plugin README).
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=
+export ZSH_AUTOSUGGEST_STRATEGY=(history)
+source "$XDG_DATA_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
