@@ -38,3 +38,5 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=
 export ZSH_AUTOSUGGEST_STRATEGY=(history)
 source "$XDG_DATA_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+source "$XDG_DATA_HOME/zsh/plugins/gclone/gclone.zsh"
+

@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PLUGIN_DIR="$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PLUGIN_ROOT="$HOME/.local/share/zsh/plugins"
+mkdir -p $PLUGIN_ROOT
 
-if [[ ! -d "$PLUGIN_DIR/.git" ]]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions "$PLUGIN_DIR"
-fi 
+if [[ ! -d "$PLUGIN_ROOT/zsh-autosuggestions/.git" ]]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$PLUGIN_ROOT/zsh-autosuggestions"
+fi
 
+ln -sfn "$SCRIPT_DIR/gclone" "$PLUGIN_ROOT/gclone"
