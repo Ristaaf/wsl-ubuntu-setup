@@ -6,5 +6,5 @@ vim.lsp.enable('cssls')    -- CSS
 vim.lsp.enable('html')     -- HTML
 vim.lsp.enable('gopls')    -- Go
 vim.lsp.enable('pyright')  -- Python
-
+vim.lsp.enable('yamlls')  -- YAML
 

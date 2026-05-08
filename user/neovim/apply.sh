@@ -7,6 +7,8 @@ NVIM_SRC_ROOT="${NVIM_SRC_ROOT:-$HOME/src}"      # where sources live
 NVIM_DIR="$NVIM_SRC_ROOT/neovim"
 NVIM_PREFIX="${NVIM_PREFIX:-$HOME/.local}"       # user-local install prefix
 NVIM_BUILD_TYPE="${NVIM_BUILD_TYPE:-RelWithDebInfo}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NVIM_CONFIG_SRC="$SCRIPT_DIR/nvim"
 
 # ---- Preconditions ----
 mkdir -p "$NVIM_SRC_ROOT"
@@ -32,7 +34,8 @@ make CMAKE_INSTALL_PREFIX="$NVIM_PREFIX" install
 "$NVIM_PREFIX/bin/nvim" --version | head -n 3
 
 # ---- Dotfiles: ~/.config/nvim → this repo -------------------------
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-NVIM_CONFIG_SRC="$SCRIPT_DIR/nvim"
 mkdir -p "$HOME/.config"
+echo Creating symlink
+echo $SCRIPT_DIR
+echo $NVIM_CONFIG_SRC
 ln -sfn "$NVIM_CONFIG_SRC" "$HOME/.config/nvim"

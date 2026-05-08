@@ -11,6 +11,8 @@ sudo apt-get install -y \
 	eza \
 	kubecolor \
 	zoxide \
-	lazygit \
 	tree \
-  unzip
+        unzip
+
+#sudo apt-get install -y \
+#	lazygit

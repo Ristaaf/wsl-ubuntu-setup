@@ -6,6 +6,8 @@ sudo apt-get install -y \
 	gettext \
 	cmake \
 	build-essential \
-	rustc \
-	cargo \
 	libssl-dev
+
+#sudo apt-get install -y \
+#	rustc \
+#	cargo
