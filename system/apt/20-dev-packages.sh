@@ -8,6 +8,6 @@ sudo apt-get install -y \
 	build-essential \
 	libssl-dev
 
-#sudo apt-get install -y \
-#	rustc \
-#	cargo
+sudo apt-get install -y \
+	rustc \
+	cargo

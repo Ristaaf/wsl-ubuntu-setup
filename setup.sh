@@ -76,6 +76,6 @@ log "USER: neovim"
 log "USER: volta"
 run_scripts_in_dir "$ROOT_DIR/user/volta"
 
----
+### ---
 
 log "SETUP COMPLETED ✅"

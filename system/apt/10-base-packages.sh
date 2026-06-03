@@ -14,5 +14,5 @@ sudo apt-get install -y \
 	tree \
         unzip
 
-#sudo apt-get install -y \
-#	lazygit
+sudo apt-get install -y \
+	lazygit
