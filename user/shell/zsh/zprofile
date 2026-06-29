@@ -5,7 +5,27 @@
 [ -f "$HOME/.zshenv" ] && . "$HOME/.zshenv"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+_nvm_default_bin() {
+  local f="$NVM_DIR/alias/default" v p
+  [[ -f $f ]] || return 1
+  v="$(<"$f")"
+  while [[ $v != v* ]]; do
+    [[ -f "$NVM_DIR/alias/$v" ]] || return 1
+    v="$(<"$NVM_DIR/alias/$v")"
+  done
+  p="$NVM_DIR/versions/node/$v/bin"
+  [[ -d $p ]] && echo "$p"
+}
+
+if p=$(_nvm_default_bin); then
+  path=($p $path)
+fi
+
+nvm() {
+  unfunction nvm 2>/dev/null
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  nvm "$@"
+}
 
 export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
