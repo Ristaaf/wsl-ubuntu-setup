@@ -3,3 +3,9 @@
 
 # Load .zshenv explicitly (defensive; zsh already does)
 [ -f "$HOME/.zshenv" ] && . "$HOME/.zshenv"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0

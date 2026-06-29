@@ -73,12 +73,9 @@ log "USER: cursor"
 log "USER: neovim"
 "$ROOT_DIR/user/neovim/apply.sh"
 
-# log "USER: volta"
-# run_scripts_in_dir "$ROOT_DIR/user/volta"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install --lts
-nvm use --lts
-corepack enable
+log "USER: nvm"
+run_scripts_in_dir "$ROOT_DIR/user/nvm"
+
 ### ---
 
 log "SETUP COMPLETED ✅"

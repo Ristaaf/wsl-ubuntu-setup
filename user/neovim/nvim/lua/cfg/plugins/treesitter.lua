@@ -6,8 +6,8 @@ return {
 		build = ":TSUpdate",
 		config = function()
 			-- The nvim-treesitter `main` branch compiles parsers with the
-			-- `tree-sitter` CLI. Volta intercepts the shim inside Node projects
-			-- and fails, so prefer the Volta-free binary in ~/.local/bin.
+			-- `tree-sitter` CLI. Node version managers can intercept the shim
+			-- inside Node projects and fail, so prefer the binary in ~/.local/bin.
 			vim.env.PATH = vim.fn.expand("~/.local/bin") .. ":" .. vim.env.PATH
 
 			local ts = require("nvim-treesitter")
