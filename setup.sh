@@ -73,8 +73,8 @@ log "USER: cursor"
 log "USER: neovim"
 "$ROOT_DIR/user/neovim/apply.sh"
 
-log "USER: volta"
-run_scripts_in_dir "$ROOT_DIR/user/volta"
+# log "USER: volta"
+# run_scripts_in_dir "$ROOT_DIR/user/volta"
 
 ### ---
 

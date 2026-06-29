@@ -4,4 +4,6 @@ GCLONE_REPOS=(
   clientfw git@bitbucket.org:ifs-pd/ifs-technology-client-framework.git
   kairos git@bitbucket.org:ifs-pd/nga-local-dev.git
   devtools git@bitbucket.org:ifs-pd/ifs-technology-aurena-devtools.git
+  skills git@bitbucket.org:ifs-pd/kairos-ai-skills.git
+  pocs git@bitbucket.org:ifs-pd/kairos-pocs.git
 )
