@@ -3,79 +3,26 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-log() {
-  printf "\n\033[1m==> %s\033[0m\n" "$*"
-}
+# shellcheck source=lib/ui.sh
+source "$ROOT_DIR/lib/ui.sh"
 
-run_script() {
-  local script="$1"
-
-  if [[ ! -x "$script" ]]; then
-    log "Skipping (not executable): $script"
-    return
-  fi
-
-  log "Running: $script"
-  "$script"
-}
-
-run_scripts_in_dir() {
-  local dir="$1"
-  local pattern="${2:-*.sh}"
-
-  if [[ ! -d "$dir" ]]; then
-    return
-  fi
-
-  while IFS= read -r script; do
-    run_script "$script"
-  done < <(find "$dir" -maxdepth 1 -type f -name "$pattern" | sort)
-}
-
-log "SETUP STARTED"
+setup_ui_init
 
 ### ---- System phase -------------------------------------------------
 
-log "SYSTEM: apt"
-sudo bash -c "
-  set -e
-  $(declare -f log run_script)
-  $(declare -f run_scripts_in_dir)
-  run_scripts_in_dir \"$ROOT_DIR/system/apt\"
-"
-
-log "SYSTEM: locale"
-sudo "$ROOT_DIR/system/locale/apply.sh"
-
-log "SYSTEM: wsl"
-sudo "$ROOT_DIR/system/wsl/apply.sh"
+setup_ui_register_dir "SYSTEM · apt" "$ROOT_DIR/system/apt" sudo
+setup_ui_register "SYSTEM · locale" sudo "$ROOT_DIR/system/locale/apply.sh"
+setup_ui_register "SYSTEM · wsl" sudo "$ROOT_DIR/system/wsl/apply.sh"
 
 ### ---- User phase ---------------------------------------------------
 
-log "USER: bin"
-"$ROOT_DIR/user/bin/apply.sh"
+setup_ui_register_dir "USER · bin" "$ROOT_DIR/user/bin"
+setup_ui_register --tty "USER · shell" "$ROOT_DIR/user/shell/apply.sh"
+setup_ui_register "USER · zsh plugins" "$ROOT_DIR/user/shell/zsh-plugins/apply.sh"
+setup_ui_register --slow "cargo build, ~2–3 min" "USER · starship" "$ROOT_DIR/user/starship/apply.sh"
+setup_ui_register "USER · tmux" "$ROOT_DIR/user/tmux/apply.sh"
+setup_ui_register "USER · cursor" "$ROOT_DIR/user/cursor/apply.sh"
+setup_ui_register --slow "compile from source, ~1–3 min" "USER · neovim" "$ROOT_DIR/user/neovim/apply.sh"
+setup_ui_register_dir "USER · nvm" "$ROOT_DIR/user/nvm"
 
-log "USER: shell"
-"$ROOT_DIR/user/shell/apply.sh"
-
-log "USER: zsh plugins"
-"$ROOT_DIR/user/shell/zsh-plugins/apply.sh"
-
-log "USER: starship"
-"$ROOT_DIR/user/starship/apply.sh"
-
-log "USER: tmux"
-"$ROOT_DIR/user/tmux/apply.sh"
-
-log "USER: cursor"
-"$ROOT_DIR/user/cursor/apply.sh"
-
-log "USER: neovim"
-"$ROOT_DIR/user/neovim/apply.sh"
-
-log "USER: nvm"
-run_scripts_in_dir "$ROOT_DIR/user/nvm"
-
-### ---
-
-log "SETUP COMPLETED ✅"
+setup_ui_run_all

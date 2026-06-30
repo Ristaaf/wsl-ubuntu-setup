@@ -6,4 +6,5 @@ GCLONE_REPOS=(
   devtools git@bitbucket.org:ifs-pd/ifs-technology-aurena-devtools.git
   skills git@bitbucket.org:ifs-pd/kairos-ai-skills.git
   pocs git@bitbucket.org:ifs-pd/kairos-pocs.git
+  apps git@bitbucket.org:ifs-pd/ifs-applications.git
 )

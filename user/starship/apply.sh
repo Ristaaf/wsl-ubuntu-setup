@@ -15,8 +15,11 @@ command -v cargo >/dev/null
 command -v rustc >/dev/null
 
 # ---- Fetch/update repo ----
+# Fetch only the pinned ref (avoid --tags; some projects use moving tags).
 if [[ -d "$STARSHIP_DIR/.git" ]]; then
-  git -C "$STARSHIP_DIR" fetch --tags --prune
+  git -C "$STARSHIP_DIR" fetch origin --prune
+  git -C "$STARSHIP_DIR" fetch origin "refs/tags/${STARSHIP_REF}:refs/tags/${STARSHIP_REF}" 2>/dev/null \
+    || git -C "$STARSHIP_DIR" fetch origin "$STARSHIP_REF"
 else
   git clone https://github.com/starship/starship.git "$STARSHIP_DIR"
 fi
