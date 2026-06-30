@@ -18,6 +18,7 @@ setup_ui_register "SYSTEM · wsl" sudo "$ROOT_DIR/system/wsl/apply.sh"
 
 setup_ui_register_dir "USER · bin" "$ROOT_DIR/user/bin"
 setup_ui_register --tty "USER · shell" "$ROOT_DIR/user/shell/apply.sh"
+setup_ui_register "USER · ssh" "$ROOT_DIR/user/ssh/apply.sh"
 setup_ui_register "USER · zsh plugins" "$ROOT_DIR/user/shell/zsh-plugins/apply.sh"
 setup_ui_register --slow "cargo build, ~2–3 min" "USER · starship" "$ROOT_DIR/user/starship/apply.sh"
 setup_ui_register "USER · tmux" "$ROOT_DIR/user/tmux/apply.sh"
