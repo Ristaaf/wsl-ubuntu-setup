@@ -13,6 +13,7 @@ rm -f \
 	"$HOME/.bashrc" \
 	"$HOME/.bash_logout" \
 	"$HOME/.bash_history" \
+	"$HOME/.motd_shown" \
 	"$HOME/.profile" \
 	"$HOME/.zcompdump"
 	

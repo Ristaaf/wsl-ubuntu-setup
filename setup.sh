@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export HISTFILE=/dev/null
+
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # shellcheck source=lib/ui.sh
@@ -27,3 +29,5 @@ setup_ui_register --slow "compile from source, ~1–3 min" "USER · neovim" "$RO
 setup_ui_register_dir "USER · nvm" "$ROOT_DIR/user/nvm"
 
 setup_ui_run_all
+
+rm -f "$HOME/.bash_history" "$HOME/.motd_shown"
