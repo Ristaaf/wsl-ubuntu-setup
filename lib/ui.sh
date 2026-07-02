@@ -168,10 +168,7 @@ setup_ui__ensure_sudo() {
     return 0
   fi
 
-  if (( SETUP_UI_INTERACTIVE )); then
-    printf 'System steps need sudo. Enter your password once when prompted.\n\n'
-  fi
-
+  export SUDO_PROMPT='Password for user %p needed: '
   sudo -v
 
   (
@@ -400,8 +397,7 @@ setup_ui__run_index() {
 
   if (( tty_step )); then
     setup_ui__leave_dashboard
-    printf '\n\033[1m%s\033[0m\n' "$label"
-    printf 'You may be asked for your password — characters are hidden while typing.\n\n'
+    printf '\n\033[1m%s\033[0m\n\n' "$label"
 
     SETUP_UI_STATUS[$idx]="running"
 
@@ -457,8 +453,6 @@ setup_ui__run_index() {
 }
 
 setup_ui__finish_success() {
-  setup_ui__draw_dashboard
-
   setup_ui__leave_dashboard
 
   if (( SETUP_UI_INTERACTIVE )); then
@@ -469,7 +463,6 @@ setup_ui__finish_success() {
     printf '\nSetup completed · %s step(s)\n' "${#SETUP_UI_LABELS[@]}"
     setup_ui_show_plan
   fi
-  printf 'Full output → %s\n' "${SETUP_UI_LOG_DIR}/latest.log"
 }
 
 setup_ui_run_all() {

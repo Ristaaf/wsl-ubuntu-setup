@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/zsh "$(id -un)"
 
 ln -sfn "$SCRIPT_DIR/zsh/zshrc"  "$HOME/.zshrc"
 ln -sfn "$SCRIPT_DIR/zsh/zshenv" "$HOME/.zshenv"
