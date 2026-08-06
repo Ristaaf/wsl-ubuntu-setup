@@ -35,6 +35,7 @@ return {
 				"prettier",
 				"stylua",
 				"eslint_d",
+				"eslint-lsp",
 				"stylelint",
                 "typescript-language-server",
                 "json-lsp",
