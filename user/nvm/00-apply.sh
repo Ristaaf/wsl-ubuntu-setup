@@ -10,7 +10,7 @@ if [ ! -s "$NVM_SH" ]; then
   echo "Installing nvm..."
 
   export PROFILE=/dev/null
-  curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 else
   echo "nvm already installed, skipping"
 fi

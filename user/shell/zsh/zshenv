@@ -1,6 +1,7 @@
 export skip_global_compinit=1
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim

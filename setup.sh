@@ -19,6 +19,7 @@ setup_ui_register "SYSTEM · wsl" sudo "$ROOT_DIR/system/wsl/apply.sh"
 ### ---- User phase ---------------------------------------------------
 
 setup_ui_register_dir "USER · bin" "$ROOT_DIR/user/bin"
+setup_ui_register "USER · git" "$ROOT_DIR/user/git/apply.sh"
 setup_ui_register "USER · shell" "$ROOT_DIR/user/shell/apply.sh"
 setup_ui_register "USER · ssh" "$ROOT_DIR/user/ssh/apply.sh"
 setup_ui_register "USER · zsh plugins" "$ROOT_DIR/user/shell/zsh-plugins/apply.sh"
