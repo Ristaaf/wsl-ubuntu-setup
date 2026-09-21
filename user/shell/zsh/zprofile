@@ -10,10 +10,18 @@ _nvm_default_bin() {
   local f="$NVM_DIR/alias/default" v p
   [[ -f $f ]] || return 1
   v="$(<"$f")"
-  while [[ $v != v* ]]; do
-    [[ -f "$NVM_DIR/alias/$v" ]] || return 1
+  # Follow a chain of plain alias-file pointers (e.g. "default" -> "16" -> "v16.20.2").
+  while [[ $v != v* && -f "$NVM_DIR/alias/$v" ]]; do
     v="$(<"$NVM_DIR/alias/$v")"
   done
+  if [[ $v != v* ]]; then
+    # Not a plain alias-file chain: a bare version ("24.14.0"), a dynamic
+    # alias ("lts/*", an LTS codename), or a keyword ("node", "stable").
+    # Hand off to nvm's own resolver rather than guessing.
+    [[ -s "$NVM_DIR/nvm.sh" ]] || return 1
+    v="$(. "$NVM_DIR/nvm.sh" >/dev/null 2>&1; nvm_version "$v" 2>/dev/null)"
+    [[ $v == v* ]] || return 1
+  fi
   p="$NVM_DIR/versions/node/$v/bin"
   [[ -d $p ]] && echo "$p"
 }
