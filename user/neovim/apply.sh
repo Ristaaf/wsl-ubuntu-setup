@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # ---- Config (override via env or orchestrator) ----
-NVIM_REF="${NVIM_REF:-v0.12.4}"                 # tag, branch, or commit
+NVIM_REF="${NVIM_REF:-v0.12.5}"                 # tag, branch, or commit
 NVIM_SRC_ROOT="${NVIM_SRC_ROOT:-$HOME/src}"      # where sources live
 NVIM_DIR="$NVIM_SRC_ROOT/neovim"
 NVIM_PREFIX="${NVIM_PREFIX:-$HOME/.local}"       # user-local install prefix
